@@ -12,6 +12,17 @@ path_chosen: int = input(f"Hi, {player} Enter the number for one of the followin
 def main() -> None:
     """Overall game function for the coin-flip game."""
     greet()
+    choose_path()
+ 
+
+def greet() -> None:
+    """Asks name then greets player to game."""
+    global player
+    print(f"Welcome to the coin flip guessing game {player}")
+
+
+def choose_path() -> None:
+    """Directs to the correct path."""
     global path_chosen
     if path_chosen == 1:
         path1()
@@ -20,11 +31,6 @@ def main() -> None:
     if path_chosen == 2: 
         path3()
 
-
-def greet() -> None:
-    """Asks name then greets player to game."""
-    global player
-    print(f"Welcome to the coin flip guessing game {player}")
 
 def path1(guess: int, SECRET: int) -> int:
     """Number Guessing Game."""
