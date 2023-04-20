@@ -34,18 +34,17 @@ def columnar(table: list[dict[str,str]]) -> dict[str,list[str]]:
         result[key] = column_values(table, key)
     return result
 
-def head(table: dict[str, list[str],], n: int) -> dict[str, list[str]]:
+def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Creates table with n rows."""
-    result: dict = {}
-    idx: int = 0
+    result: dict[str, list[str]] = {}
     for key in table:
-        n_list: list[dict[str, list[str]]] = []
+        idx: int = 0
+        n_list: list[str] = []
         if len(table[key]) < n:
-            result[key] = n_list
-        else:
-            while idx < n:
-                n_list.append(table.items())
-                idx += 1
+            n = len(table[key])
+        while idx < n:
+            n_list.append(table[key][idx])
+            idx += 1
         result[key] = n_list
     return result
 
@@ -63,7 +62,7 @@ def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[s
         result[column] = table1[column]
     for column in table2:
         if column in result:
-            result[column] = table2[column]
+            result[column] += table2[column]
         else:
             result[column] = table2[column]
     return result
